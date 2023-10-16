@@ -7,7 +7,7 @@ https://docs.google.com/document/d/136b0si_J-QH8YejF3qIyXeVQidPrsqw4/edit?usp=sh
 - Kotlin
 - XML
 - Koin
-- Ktor
+- Retrofit
 - Coroutines
 - MVVM
 - Clean Arch
