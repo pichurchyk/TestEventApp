@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "TestEventApp"
 include ':app'
+include ':domain'
+include ':common'
