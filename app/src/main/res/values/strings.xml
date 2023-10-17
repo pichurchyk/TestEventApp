@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">TestEventApp</string>
 
+    <string name="default_error">Some error occurred</string>
+    <string name="ok">OK</string>
+
     <string name="title_events">Events</string>
     <string name="title_schedule">Schedule</string>
 </resources>

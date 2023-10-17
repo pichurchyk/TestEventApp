@@ -1,4 +1,4 @@
-package com.pichurchyk.testeventapp
+package com.pichurchyk.testeventapp.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

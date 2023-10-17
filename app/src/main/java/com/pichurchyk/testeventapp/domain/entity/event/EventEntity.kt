@@ -1,4 +1,4 @@
-package com.pichurchyk.domain.entity.event
+package com.pichurchyk.testeventapp.domain.entity.event
 
 data class EventEntity(
     val id: Int,
