@@ -5,6 +5,6 @@ data class EventResponse(
     val title: String,
     val subtitle: String?,
     val date: String,
-    val imageURL: String,
-    val videoURL: String,
+    val imageUrl: String?,
+    val videoUrl: String?,
 )

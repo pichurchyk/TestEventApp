@@ -3,6 +3,11 @@
 
     <string name="default_error">Some error occurred</string>
     <string name="ok">OK</string>
+    <string name="retry">Retry</string>
+
+    <string name="event_text_placeholder">Event text</string>
+
+    <string name="event_image_description">Event text</string>
 
     <string name="title_events">Events</string>
     <string name="title_schedule">Schedule</string>

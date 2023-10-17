@@ -2,8 +2,9 @@ package com.pichurchyk.testeventapp.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
+import com.pichurchyk.testeventapp.R
 import com.pichurchyk.testeventapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +17,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val navController = findNavController(R.id.fragment_container_view)
-//        setupWithNavController(binding.bottomNav, navController)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        setupWithNavController(binding.bottomNav, navController)
     }
 }

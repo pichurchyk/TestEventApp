@@ -10,7 +10,7 @@ object EventMapper : BaseMapper<EventResponse, EventEntity> {
         title = from.title,
         subtitle = from.subtitle,
         date = from.date,
-        imageURL = from.imageURL,
-        videoURL = from.videoURL,
+        imageURL = from.imageUrl,
+        videoURL = from.videoUrl,
     )
 }

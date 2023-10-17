@@ -4,15 +4,17 @@
 
     <color name="white">#FFFFFF</color>
 
+    <color name="text_color">#1B1919</color>
+    <color name="text_color_light">#8C8B8B</color>
+
     <color name="color_primary">#BAE49B</color>
     <color name="color_primary_dark">#668C4A</color>
     <color name="color_primary_variant">#82B65B</color>
-    <color name="color_on_primary">#1B1919</color>
+    <color name="color_on_primary">#1A1B19</color>
 
     <color name="color_secondary">#DAE386</color>
     <color name="color_secondary_variant">#AAB356</color>
     <color name="color_on_secondary">#1B1919</color>
 
     <color name="color_error">#FF5722</color>
-    <color name="color_on_error">#E3E3E3</color>
 </resources>

@@ -64,8 +64,7 @@ abstract class BaseFragment<VBinding : ViewBinding> : Fragment() {
         onActionBtnClick: () -> Unit,
     ) {
         Snackbar.make(
-            binding.root.context,
-            binding.root,
+            requireView(),
             messageResId,
             Snackbar.LENGTH_INDEFINITE,
         )

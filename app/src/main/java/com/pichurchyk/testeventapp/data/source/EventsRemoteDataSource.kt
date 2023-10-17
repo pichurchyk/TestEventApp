@@ -9,7 +9,8 @@ interface EventsRemoteDataSource {
     @GET(LOAD_EVENTS)
     suspend fun loadEvents(): Response<List<EventResponse>>
 
-    private companion object {
-        private const val LOAD_EVENTS = "v1/{workspaceId}/assets-categories/"
+    companion object {
+        private const val LOAD_EVENTS = "getEvents"
+        const val REMOTE_BASE_URL = "https://us-central1-dazn-sandbox.cloudfunctions.net/"
     }
 }

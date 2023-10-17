@@ -9,5 +9,11 @@
         <item name="colorSecondary">@color/color_secondary</item>
         <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
         <item name="colorOnSecondary">@color/color_on_secondary</item>
+
+        <item name="snackbarStyle">@style/Widget.MaterialComponents.Snackbar</item>
+        <!-- Style to use for action button within a Snackbar in this theme. -->
+        <item name="snackbarButtonStyle">@style/Widget.MaterialComponents.Button.TextButton.Snackbar</item>
+        <!-- Style to use for message text within a Snackbar in this theme. -->
+        <item name="snackbarTextViewStyle">@style/Widget.MaterialComponents.Snackbar.TextView</item>
     </style>
 </resources>

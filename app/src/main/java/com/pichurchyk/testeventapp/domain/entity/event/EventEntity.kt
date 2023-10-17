@@ -5,6 +5,6 @@ data class EventEntity(
     val title: String,
     val subtitle: String?,
     val date: String,
-    val imageURL: String,
-    val videoURL: String,
+    val imageURL: String?,
+    val videoURL: String?,
 )
