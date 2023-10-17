@@ -1,0 +1,15 @@
+<resources>
+    <dimen name="default_container_vertical_margin">16dp</dimen>
+    <dimen name="default_container_horizontal_margin">16dp</dimen>
+
+    <dimen name="default_view_margin">16dp</dimen>
+
+    <dimen name="nav_view_radius">100dp</dimen>
+    <dimen name="nav_view_elevation">40dp</dimen>
+
+    <dimen name="text_header_1">32sp</dimen>
+    <dimen name="text_header_2">24sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+</resources>
