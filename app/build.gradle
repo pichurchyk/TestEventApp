@@ -33,6 +33,11 @@ android {
     buildFeatures {
         viewBinding true
     }
+    android.testOptions {
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
@@ -67,4 +72,8 @@ dependencies {
 
 //    COIL
     implementation("io.coil-kt:coil:2.4.0")
+
+//    TEST
+    testImplementation "io.kotest:kotest-runner-junit5:5.4.1"
+    testImplementation "io.mockk:mockk:1.12.5"
 }
