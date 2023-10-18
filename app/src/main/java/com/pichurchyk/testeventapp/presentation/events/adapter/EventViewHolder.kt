@@ -4,7 +4,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.pichurchyk.testeventapp.R
 import com.pichurchyk.testeventapp.databinding.ItemEventBinding
+import com.pichurchyk.testeventapp.domain.common.getEventDay
+import com.pichurchyk.testeventapp.domain.common.getEventTime
+import com.pichurchyk.testeventapp.domain.common.getTodayOrYesterday
 import com.pichurchyk.testeventapp.domain.entity.event.EventEntity
+import com.pichurchyk.testeventapp.utils.date.getStringResId
 import com.pichurchyk.testeventapp.utils.visibleIf
 
 class EventViewHolder(
@@ -21,7 +25,17 @@ class EventViewHolder(
 
             tvTitle.text = event.title
 
-            tvDate.text = event.date
+            event.date.let { date ->
+                val todayOrYesterday = date.getTodayOrYesterday()?.let {
+                    root.context.getString(it.getStringResId())
+                }
+                tvDate.text = todayOrYesterday ?: date.getEventDay()
+
+                tvTime.apply {
+                    visibleIf(todayOrYesterday != null)
+                    text = date.getEventTime()
+                }
+            }
 
             ivEventImage.load(event.imageURL) {
                 crossfade(true)

@@ -3,6 +3,7 @@
 
     <string name="default_error">Some error occurred</string>
     <string name="error_no_connection">No internet connection</string>
+
     <string name="ok">OK</string>
     <string name="retry">Retry</string>
 
@@ -14,4 +15,7 @@
 
     <string name="title_events">Events</string>
     <string name="title_schedule">Schedule</string>
+
+    <string name="label_today">Today</string>
+    <string name="label_yesterday">Yesterday</string>
 </resources>
