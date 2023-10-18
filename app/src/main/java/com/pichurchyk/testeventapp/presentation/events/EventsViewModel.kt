@@ -5,6 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.pichurchyk.testeventapp.data.Resource
 import com.pichurchyk.testeventapp.domain.useCase.GetEventsUseCase
 import com.pichurchyk.testeventapp.presentation.ExceptionHandler
+import com.pichurchyk.testeventapp.presentation.events.viewState.EventsViewState
+import com.pichurchyk.testeventapp.presentation.events.viewState.Loader
+import com.pichurchyk.testeventapp.presentation.events.viewState.LoaderBig
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
@@ -19,17 +22,27 @@ class EventsViewModel(
     private val _state = MutableStateFlow(EventsViewState())
     val state = _state.asStateFlow()
 
-    fun loadEvents() {
+    fun loadEvents(loaderState: Loader = LoaderBig()) {
         viewModelScope.launch {
             getEventsUseCase.getEvents()
                 .onStart {
                     _state.update { currentState ->
-                        currentState.copy(isLoading = true, exception = null)
+                        currentState.copy(
+                            loader = loaderState.apply {
+                                isVisible = true
+                            },
+                            exception = null,
+                        )
                     }
                 }
                 .catch {
                     _state.update { currentState ->
-                        currentState.copy(isLoading = false, exception = ExceptionHandler(it))
+                        currentState.copy(
+                            loader = loaderState.apply {
+                                isVisible = false
+                            },
+                            exception = ExceptionHandler(it),
+                        )
                     }
                 }
                 .collect { response ->
@@ -37,7 +50,9 @@ class EventsViewModel(
                         is Resource.Success -> {
                             _state.update { currentState ->
                                 currentState.copy(
-                                    isLoading = false,
+                                    loader = loaderState.apply {
+                                        isVisible = false
+                                    },
                                     exception = null,
                                     events = response.data,
                                 )
@@ -47,7 +62,9 @@ class EventsViewModel(
                         is Resource.Error -> {
                             _state.update { currentState ->
                                 currentState.copy(
-                                    isLoading = false,
+                                    loader = loaderState.apply {
+                                        isVisible = false
+                                    },
                                     exception = response.e,
                                 )
                             }

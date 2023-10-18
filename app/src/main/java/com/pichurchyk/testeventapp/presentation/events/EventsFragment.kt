@@ -7,6 +7,8 @@ import com.pichurchyk.testeventapp.databinding.FragmentEventsBinding
 import com.pichurchyk.testeventapp.domain.entity.event.EventEntity
 import com.pichurchyk.testeventapp.presentation.BaseFragment
 import com.pichurchyk.testeventapp.presentation.events.adapter.EventsAdapter
+import com.pichurchyk.testeventapp.presentation.events.viewState.LoaderBig
+import com.pichurchyk.testeventapp.presentation.events.viewState.LoaderSmall
 import com.pichurchyk.testeventapp.utils.visibleIf
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,7 +30,13 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(), EventsAdapter.Even
     override fun setUpViews() {
         super.setUpViews()
 
-        binding.rvEvents.adapter = adapter
+        with(binding) {
+            rvEvents.adapter = adapter
+
+            btnRetry.setOnClickListener {
+                viewModel.loadEvents(LoaderSmall())
+            }
+        }
 
         viewModel.loadEvents()
     }
@@ -39,7 +47,17 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(), EventsAdapter.Even
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.state.collect { state ->
                 with(binding) {
-                    progressLoader.visibleIf(state.isLoading)
+                    state.loader.let { loader ->
+                        when (loader) {
+                            is LoaderSmall -> {
+                                progressLoaderSmall.visibleIf(loader.isVisible)
+                            }
+
+                            is LoaderBig -> {
+                                progressLoader.visibleIf(loader.isVisible)
+                            }
+                        }
+                    }
 
                     state.exception?.let {
                         showMessageWithAction(

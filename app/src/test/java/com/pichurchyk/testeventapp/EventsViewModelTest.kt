@@ -5,7 +5,7 @@ import com.pichurchyk.testeventapp.domain.entity.event.EventEntity
 import com.pichurchyk.testeventapp.domain.repository.EventsRepository
 import com.pichurchyk.testeventapp.domain.useCase.GetEventsUseCase
 import com.pichurchyk.testeventapp.presentation.events.EventsViewModel
-import com.pichurchyk.testeventapp.presentation.events.EventsViewState
+import com.pichurchyk.testeventapp.presentation.events.viewState.EventsViewState
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery

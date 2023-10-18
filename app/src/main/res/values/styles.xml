@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="HeaderMax" parent="Theme.AppCompat">
+        <item name="fontFamily">@font/roboto_slab_bold</item>
+        <item name="android:textSize">@dimen/text_x_large</item>
+    </style>
+
     <style name="HeaderBig" parent="Theme.AppCompat">
         <item name="fontFamily">@font/roboto_slab_bold</item>
         <item name="android:textSize">@dimen/text_large</item>

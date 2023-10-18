@@ -6,17 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".presentation.events.EventsFragment">
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/progressLoader"
+    <TextView
+        android:id="@+id/tvPageTitle"
+        style="@style/HeaderMax"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_view_margin"
+        android:text="@string/title_events"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/btnRetry"
+        style="@style/ContentSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_view_margin"
+        android:padding="@dimen/default_view_padding"
+        android:text="@string/retry"
+        app:layout_constraintBottom_toBottomOf="@id/tvPageTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvPageTitle" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressLoaderSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
         android:indeterminate="true"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/btnRetry"
+        app:layout_constraintEnd_toStartOf="@id/btnRetry"
+        app:layout_constraintTop_toTopOf="@id/btnRetry"
+        app:trackCornerRadius="2dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/image_corner_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:trackCornerRadius="2dp"
-        tools:visibility="gone" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressLoader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:indeterminate="true"
+            android:padding="@dimen/default_view_padding"
+            android:visibility="gone"
+            app:trackCornerRadius="2dp" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvEvents"
@@ -29,7 +73,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPageTitle"
         tools:listitem="@layout/item_event" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
