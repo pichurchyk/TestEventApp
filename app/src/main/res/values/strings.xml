@@ -2,10 +2,13 @@
     <string name="app_name">TestEventApp</string>
 
     <string name="default_error">Some error occurred</string>
+    <string name="error_no_connection">No internet connection</string>
     <string name="ok">OK</string>
     <string name="retry">Retry</string>
 
     <string name="event_text_placeholder">Event text</string>
+
+    <string name="label_network_listener">NetworkListener</string>
 
     <string name="event_image_description">Event text</string>
 
