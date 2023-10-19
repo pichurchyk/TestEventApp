@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.events.EventsFragment">
+    tools:context=".presentation.schedule.ScheduleFragment">
 
     <TextView
         android:id="@+id/tvPageTitle"
@@ -12,35 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_view_margin"
-        android:text="@string/title_events"
+        android:text="@string/title_schedule"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/btnRetry"
-        style="@style/ContentSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/default_view_margin"
-        android:padding="@dimen/default_view_padding"
-        android:text="@string/retry"
-        app:layout_constraintBottom_toBottomOf="@id/tvPageTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvPageTitle" />
-
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/progressLoaderSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:indeterminate="true"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/btnRetry"
-        app:layout_constraintEnd_toStartOf="@id/btnRetry"
-        app:layout_constraintTop_toTopOf="@id/btnRetry"
-        app:trackCornerRadius="2dp" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"

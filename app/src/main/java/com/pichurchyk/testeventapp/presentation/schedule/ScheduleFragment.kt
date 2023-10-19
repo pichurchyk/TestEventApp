@@ -1,30 +1,32 @@
-package com.pichurchyk.testeventapp.presentation.events
+package com.pichurchyk.testeventapp.presentation.schedule
 
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.pichurchyk.testeventapp.R
-import com.pichurchyk.testeventapp.databinding.FragmentEventsBinding
-import com.pichurchyk.testeventapp.domain.entity.event.EventEntity
+import com.pichurchyk.testeventapp.databinding.FragmentScheduleBinding
+import com.pichurchyk.testeventapp.domain.entity.schedule.ScheduleEventEntity
 import com.pichurchyk.testeventapp.presentation.BaseFragment
-import com.pichurchyk.testeventapp.presentation.events.adapter.EventsAdapter
 import com.pichurchyk.testeventapp.presentation.events.viewState.LoaderBig
-import com.pichurchyk.testeventapp.presentation.events.viewState.LoaderSmall
+import com.pichurchyk.testeventapp.presentation.schedule.adapter.ScheduleAdapter
 import com.pichurchyk.testeventapp.utils.visibleIf
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class EventsFragment : BaseFragment<FragmentEventsBinding>(), EventsAdapter.EventClickListener {
+class ScheduleFragment :
+    BaseFragment<FragmentScheduleBinding>(),
+    ScheduleAdapter.EventClickListener {
 
-    private val viewModel: EventsViewModel by viewModel {
+    private val viewModel: ScheduleViewModel by viewModel {
         parametersOf()
     }
 
-    override fun getViewBinding(): FragmentEventsBinding =
-        FragmentEventsBinding.inflate(layoutInflater)
+    override fun getViewBinding(): FragmentScheduleBinding =
+        FragmentScheduleBinding.inflate(layoutInflater)
 
-    private val adapter: EventsAdapter by lazy {
-        EventsAdapter(this)
+    private val adapter: ScheduleAdapter by lazy {
+        ScheduleAdapter(this)
     }
 
     override fun setUpViews() {
@@ -32,13 +34,9 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(), EventsAdapter.Even
 
         with(binding) {
             rvEvents.adapter = adapter
-
-            btnRetry.setOnClickListener {
-                viewModel.loadEvents(LoaderSmall())
-            }
+            (rvEvents.itemAnimator as SimpleItemAnimator).supportsChangeAnimations =
+                false
         }
-
-        viewModel.loadEvents()
     }
 
     override fun observeData() {
@@ -49,10 +47,6 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(), EventsAdapter.Even
                 with(binding) {
                     state.loader.let { loader ->
                         when (loader) {
-                            is LoaderSmall -> {
-                                progressLoaderSmall.visibleIf(loader.isVisible)
-                            }
-
                             is LoaderBig -> {
                                 progressLoader.visibleIf(loader.isVisible)
                             }
@@ -77,7 +71,7 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(), EventsAdapter.Even
         }
     }
 
-    override fun onEventClick(event: EventEntity) {
+    override fun onEventClick(event: ScheduleEventEntity) {
         Log.d("AdapterEvent", "${event.id} clicked")
     }
 }

@@ -4,7 +4,9 @@ import com.pichurchyk.testeventapp.data.repository.EventsRepositoryImpl
 import com.pichurchyk.testeventapp.data.source.EventsRemoteDataSource
 import com.pichurchyk.testeventapp.domain.repository.EventsRepository
 import com.pichurchyk.testeventapp.domain.useCase.GetEventsUseCase
+import com.pichurchyk.testeventapp.domain.useCase.GetScheduledEventsUseCase
 import com.pichurchyk.testeventapp.presentation.events.EventsViewModel
+import com.pichurchyk.testeventapp.presentation.schedule.ScheduleViewModel
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -46,9 +48,17 @@ val appModule = module {
         GetEventsUseCase(eventsRepository = get())
     }
 
+    single {
+        GetScheduledEventsUseCase(eventsRepository = get())
+    }
+
 //    ViewModels
     single {
         EventsViewModel(getEventsUseCase = get())
+    }
+
+    single {
+        ScheduleViewModel(getScheduledEventsUseCase = get())
     }
 }
 
