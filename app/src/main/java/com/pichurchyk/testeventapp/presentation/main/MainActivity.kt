@@ -1,4 +1,4 @@
-package com.pichurchyk.testeventapp.presentation
+package com.pichurchyk.testeventapp.presentation.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.pichurchyk.testeventapp.R
 import com.pichurchyk.testeventapp.databinding.ActivityMainBinding
+import com.pichurchyk.testeventapp.utils.visibleIf
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,5 +23,9 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         setupWithNavController(binding.bottomNav, navController = navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            binding.bottomNav.visibleIf(Screens.screensWithNav.contains(destination.id))
+        }
     }
 }

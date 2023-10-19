@@ -14,7 +14,6 @@ import org.joda.time.DateTime
 
 class ScheduleEventViewHolder(
     private val binding: ItemEventBinding,
-    private val clickListener: ScheduleAdapter.EventClickListener,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(event: ScheduleEventEntity) {
@@ -38,10 +37,6 @@ class ScheduleEventViewHolder(
             ivEventImage.load(event.imageURL) {
                 crossfade(true)
                 error(R.drawable.ic_img_not_found)
-            }
-
-            root.setOnClickListener {
-                clickListener.onEventClick(event)
             }
         }
     }

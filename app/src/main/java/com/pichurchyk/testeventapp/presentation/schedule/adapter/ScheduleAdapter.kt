@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.pichurchyk.testeventapp.databinding.ItemEventBinding
 import com.pichurchyk.testeventapp.domain.entity.schedule.ScheduleEventEntity
 
-class ScheduleAdapter(private val clickListener: EventClickListener) :
+class ScheduleAdapter() :
     ListAdapter<ScheduleEventEntity, ScheduleEventViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleEventViewHolder {
@@ -17,7 +17,7 @@ class ScheduleAdapter(private val clickListener: EventClickListener) :
             false,
         )
 
-        return ScheduleEventViewHolder(binding, clickListener)
+        return ScheduleEventViewHolder(binding)
     }
 
     override fun getItemId(position: Int): Long {
@@ -38,9 +38,5 @@ class ScheduleAdapter(private val clickListener: EventClickListener) :
             newItem: ScheduleEventEntity,
         ) =
             oldItem == newItem
-    }
-
-    interface EventClickListener {
-        fun onEventClick(event: ScheduleEventEntity)
     }
 }

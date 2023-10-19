@@ -9,11 +9,23 @@
         android:id="@+id/eventsFragment"
         android:name="com.pichurchyk.testeventapp.presentation.events.EventsFragment"
         android:label="fragment_events"
-        tools:layout="@layout/fragment_events" />
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/action_eventsFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/scheduleFragment"
         android:name="com.pichurchyk.testeventapp.presentation.schedule.ScheduleFragment"
         android:label="fragment_schedule"
         tools:layout="@layout/fragment_schedule" />
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.pichurchyk.testeventapp.presentation.video.VideoFragment"
+        android:label="VideoFragment" >
+        <argument
+            android:name="videoUrl"
+            app:argType="string" />
+    </fragment>
 </navigation>
