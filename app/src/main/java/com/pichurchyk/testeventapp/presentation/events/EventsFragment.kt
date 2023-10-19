@@ -1,7 +1,7 @@
 package com.pichurchyk.testeventapp.presentation.events
 
-import android.util.Log
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.pichurchyk.testeventapp.R
 import com.pichurchyk.testeventapp.databinding.FragmentEventsBinding
 import com.pichurchyk.testeventapp.domain.entity.event.EventEntity
@@ -78,6 +78,11 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(), EventsAdapter.Even
     }
 
     override fun onEventClick(event: EventEntity) {
-        Log.d("AdapterEvent", "${event.id} clicked")
+        event.videoURL?.let {
+            EventsFragmentDirections.actionEventsFragmentToVideoFragment(event.videoURL)
+                .also {
+                    findNavController().navigate(it)
+                }
+        }
     }
 }
