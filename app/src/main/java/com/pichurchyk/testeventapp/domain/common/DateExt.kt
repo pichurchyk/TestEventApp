@@ -7,9 +7,7 @@ import com.pichurchyk.testeventapp.domain.entity.date.DateType
 import com.pichurchyk.testeventapp.domain.entity.date.EventDate
 import org.joda.time.DateTime
 
-fun EventDate.getTodayOrYesterday(): DateType? {
-    val currentDate = DateTime.now()
-
+fun EventDate.getTodayOrYesterday(currentDate: DateTime): DateType? {
     val currentDay = currentDate.dayOfYear
     val eventDay = date.dayOfYear
 

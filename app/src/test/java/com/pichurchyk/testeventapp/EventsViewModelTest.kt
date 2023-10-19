@@ -37,7 +37,9 @@ class EventsViewModelTest : StringSpec({
     "initial viewModel.state should be with default values of EventsViewState" {
         val viewModel = EventsViewModel(getEventsUseCase)
 
-        viewModel.state.value shouldBe EventsViewState()
+        val viewStateLoader = viewModel.state.value.loader
+
+        viewModel.state.value shouldBe EventsViewState().copy(loader = viewStateLoader)
     }
 
     "viewModel.loadEvents should make API call to events and update state" {

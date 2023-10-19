@@ -10,6 +10,7 @@ import com.pichurchyk.testeventapp.domain.common.getTodayOrYesterday
 import com.pichurchyk.testeventapp.domain.entity.event.EventEntity
 import com.pichurchyk.testeventapp.utils.date.getStringResId
 import com.pichurchyk.testeventapp.utils.visibleIf
+import org.joda.time.DateTime
 
 class EventViewHolder(
     private val binding: ItemEventBinding,
@@ -26,7 +27,7 @@ class EventViewHolder(
             tvTitle.text = event.title
 
             event.date.let { date ->
-                val todayOrYesterday = date.getTodayOrYesterday()?.let {
+                val todayOrYesterday = date.getTodayOrYesterday(DateTime.now())?.let {
                     root.context.getString(it.getStringResId())
                 }
                 tvDate.text = todayOrYesterday ?: date.getEventDay()
