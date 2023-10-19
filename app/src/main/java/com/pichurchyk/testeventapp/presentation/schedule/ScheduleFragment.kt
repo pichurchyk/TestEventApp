@@ -7,7 +7,6 @@ import com.pichurchyk.testeventapp.R
 import com.pichurchyk.testeventapp.databinding.FragmentScheduleBinding
 import com.pichurchyk.testeventapp.domain.entity.schedule.ScheduleEventEntity
 import com.pichurchyk.testeventapp.presentation.BaseFragment
-import com.pichurchyk.testeventapp.presentation.events.viewState.LoaderBig
 import com.pichurchyk.testeventapp.presentation.schedule.adapter.ScheduleAdapter
 import com.pichurchyk.testeventapp.utils.visibleIf
 import kotlinx.coroutines.launch
@@ -45,13 +44,7 @@ class ScheduleFragment :
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.state.collect { state ->
                 with(binding) {
-                    state.loader.let { loader ->
-                        when (loader) {
-                            is LoaderBig -> {
-                                progressLoader.visibleIf(loader.isVisible)
-                            }
-                        }
-                    }
+                    progressLoader.visibleIf(state.isLoading)
 
                     state.exception?.let {
                         showMessageWithAction(
@@ -63,7 +56,7 @@ class ScheduleFragment :
                     }
 
                     state.events.let { events ->
-                        tvEmpty.visibleIf(events.isEmpty() && !state.loader.isVisible)
+                        tvEmpty.visibleIf(events.isEmpty() && !state.isLoading)
                         adapter.submitList(events)
                     }
                 }
