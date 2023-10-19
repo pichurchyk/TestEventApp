@@ -48,9 +48,7 @@ class ScheduleViewModel(
                 .onStart {
                     _state.update { currentState ->
                         currentState.copy(
-                            loader = currentState.loader.apply {
-                                isVisible = isBackground
-                            },
+                            isLoading = !isBackground,
                             exception = null,
                         )
                     }
@@ -58,9 +56,7 @@ class ScheduleViewModel(
                 .catch {
                     _state.update { currentState ->
                         currentState.copy(
-                            loader = currentState.loader.apply {
-                                isVisible = false
-                            },
+                            isLoading = false,
                             exception = ExceptionHandler(it),
                         )
                     }
@@ -72,9 +68,7 @@ class ScheduleViewModel(
                         is Resource.Success -> {
                             _state.update { currentState ->
                                 currentState.copy(
-                                    loader = currentState.loader.apply {
-                                        isVisible = false
-                                    },
+                                    isLoading = false,
                                     exception = null,
                                     events = response.data,
                                 )
@@ -86,9 +80,7 @@ class ScheduleViewModel(
                         is Resource.Error -> {
                             _state.update { currentState ->
                                 currentState.copy(
-                                    loader = currentState.loader.apply {
-                                        isVisible = false
-                                    },
+                                    isLoading = false,
                                     exception = response.e,
                                 )
                             }
