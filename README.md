@@ -34,4 +34,8 @@ https://docs.google.com/document/d/136b0si_J-QH8YejF3qIyXeVQidPrsqw4/edit?usp=sh
 	- Unit tests
 4. **Playback screen** - ~4 hours
 
+**Total time spent = 21 hours**
+
+All requested features implemented. Video player works, but more time needs to optimize. Implemented few unit & integrational tests.
+
 > **Note:** All points listed above will be completed in order and applied step by step
